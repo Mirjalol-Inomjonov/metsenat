@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;0,600;0,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap");
+:root {
+  --blue: #3366ff;
+  --light-blue: rgba(51, 102, 255, 0.6);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.logo__name {
+  color: #28293d;
+}
+
+.logo__club {
+  background: #e94a47;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 4px 8px;
+  letter-spacing: 1px;
+  line-height: 14px;
+}
+
+.nav-link__item a {
+  color: #28293d;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.nav-link__item a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #3366ff;
+  display: block;
+  margin: auto;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: translate(0, 6px);
+          transform: translate(0, 6px);
+}
+
+.nav-link__item a:hover::after {
+  width: 100%;
+}
+
+.nav-link__item button {
+  color: #3366ff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  border: 2px solid #3366ff;
+  border-radius: 8px;
+  padding: 6px 16px;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: #1d1d1f;
+}
+
+.btns-wrapper {
+  margin: 40px 0 28px 0;
+}
+
+.btns-wrapper__btn {
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 14px 89px;
+  text-align: center;
+  letter-spacing: 1.125px;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  background: #ffffff;
+  border: 2px solid #e0e7ff;
+}
+
+.btns-wrapper__btn:nth-child(1) {
+  border-radius: 6px 0 0 6px;
+  border-right: none;
+}
+
+.btns-wrapper__btn:nth-child(2) {
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+}
+
+.btns-wrapper__btn.active {
+  color: #fff;
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+.form__lable {
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1.125px;
+  text-transform: uppercase;
+  color: #1d1d1f;
+}
+
+.form__input {
+  background: rgba(224, 231, 255, 0.2);
+  border: 1px solid #e0e7ff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 6px;
+  padding: 12px 16px;
+  outline: none;
+  margin: 8px 0 28px 0;
+}
+
+.form__input::-webkit-input-placeholder {
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(46, 56, 77, 0.35);
+}
+
+.form__input:-ms-input-placeholder {
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(46, 56, 77, 0.35);
+}
+
+.form__input::-ms-input-placeholder {
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(46, 56, 77, 0.35);
+}
+
+.form__input::placeholder {
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(46, 56, 77, 0.35);
+}
+
+.form .price {
+  margin: 8px 0 28px 0;
+}
+
+.form .price__amount {
+  position: relative;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: #2e384d;
+  padding: 20px 32px;
+  background: #ffffff;
+  border: 1px solid #e0e7ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form .price__amount.active {
+  background: #f9faff;
+  border: 2px solid #2e5bff;
+}
+
+.form .price__amount_uzs {
+  font-size: 12px;
+  line-height: 18px;
+  color: #2e5bff;
+  margin-left: 4px;
+}
+
+.form .price__amount__ckeckbox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 12px;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  background: #2e5bff;
+  visibility: hidden;
+}
+
+.form .price__amount__ckeckbox.isCheckbox {
+  visibility: visible;
+}
+
+.form .price__amount__ckeckbox .fa {
+  color: #fff;
+  font-size: 12px;
+}
+
+.form__submit {
+  background-color: var(--blue);
+  color: #fff;
+  padding: 14px;
+  border-radius: 6px;
+}
+/*# sourceMappingURL=main.css.map */
