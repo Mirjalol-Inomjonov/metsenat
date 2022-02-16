@@ -53,12 +53,22 @@ export default {
   props: {
     selectedComponent: String,
   },
+  data() {
+    return {
+      isAdmin: {
+        login: null,
+        password: null,
+        reCAPTCHA: false,
+      },
+    }
+  },
 
   methods: {
     logout() {
       const x = confirm('Are you sure?')
       if (x) {
         localStorage.removeItem('token')
+        this.$store.commit('auth/SET_USER', this.isAdmin)
         this.$router.push({ name: 'index' })
       }
     },

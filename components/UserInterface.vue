@@ -4,6 +4,7 @@
     data-aos="fade-right"
     data-aos-offset="300"
     data-aos-duration="2000"
+    data-aos-once="true"
   >
     <h1 class="sponsor-content__title font-bold text-4xl">
       Homiy sifatida ariza topshirish

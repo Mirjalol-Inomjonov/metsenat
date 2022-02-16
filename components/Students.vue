@@ -16,6 +16,7 @@
             class="table-content-header__row"
             data-aos="zoom-in-up"
             data-aos-duration="2000"
+            data-aos-once="true"
           >
             <th class="table-content-header__row-item">#</th>
             <th class="table-content-header__row-item">F.I.SH</th>
@@ -33,6 +34,7 @@
             v-for="(student, index) in this.$store.state.students"
             :key="index"
             data-aos="zoom-in-up"
+            data-aos-once="true"
             data-aos-duration="2000"
           >
             <td class="table-content-body__row-item">{{ index + 1 }}</td>

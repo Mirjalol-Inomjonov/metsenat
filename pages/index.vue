@@ -4,11 +4,12 @@
     <Header
       :selectedComponent="selectedComponent"
       :showModalWindow="showModalWindow"
-      @show-modal="showModalWindow = !showModalWindow"
-      @selected-comp="selectedComponent = 'UserInterface'"
       data-aos="fade-down"
       data-aos-easing="linear"
       data-aos-duration="2000"
+      data-aos-once="true"
+      @show-modal="showModalWindow = !showModalWindow"
+      @selected-comp="selectedComponent = 'UserInterface'"
     />
 
     <main
@@ -29,6 +30,7 @@
         data-aos="fade-left"
         data-aos-offset="300"
         data-aos-duration="2000"
+        data-aos-once="true"
       >
         <div class="info-content relative z-20">
           <h2
@@ -101,23 +103,23 @@
         <div class="modal__content mt-10 min-w-[379px]">
           <!-- form card -->
           <div class="form-card">
-            <form class="form" @submit.prevent="login">
+            <form class="form !overflow-visible" @submit.prevent="login">
               <div class="flex items-center justify-between mb-10">
                 <h2 class="form__title">Kirish</h2>
                 <i
-                  @click="showModalWindow = !showModalWindow"
                   class="fas fa-times cursor-pointer inline-block text-gray-300 text-3xl p-1 hover:rotate-180 transition"
+                  @click="showModalWindow = !showModalWindow"
                 ></i>
               </div>
 
               <div>
                 <label class="form__lable block" for="login">lOGIN</label>
                 <input
+                  id="login"
+                  v-model="authForm.login"
                   class="form__input"
                   type="text"
                   placeholder="admin8904"
-                  id="login"
-                  v-model="authForm.login"
                 />
               </div>
 
@@ -125,19 +127,19 @@
                 <label class="form__lable block" for="password">PAROL</label>
                 <div class="relative form__input form__input_p0-m0">
                   <input
+                    id="password"
                     ref="password"
+                    v-model="authForm.password"
                     class="w-full h-full px-4 py-3 pr-12 outline-none"
                     type="password"
-                    id="password"
                     placeholder="********"
-                    v-model="authForm.password"
                   />
                   <i
-                    @click="showPasswordFunc"
                     :class="[
                       showPassword ? 'fa-eye' : 'fa-eye-slash',
                       'fas  inline-block absolute right-3 top-1/2 translate-y-[-50%] text-lg cursor-pointer text-gray-400 hover:text-gray-500 transition',
                     ]"
+                    @click="showPasswordFunc"
                   ></i>
                 </div>
 
@@ -153,14 +155,14 @@
                 >
               </div>
 
-              <!-- check robot content -->
+              <!-- check reCAPTCHA -->
               <div class="form-check-robot flex items-center justify-between">
                 <div class="flex items-center">
                   <input
-                    type="checkbox"
                     id="check"
+                    v-model="authForm.reCAPTCHA"
                     class="w-5 h-5 border-gray-500 border-2"
-                    v-model="authForm.checkRobot"
+                    type="checkbox"
                   />
                   <label class="pl-2 cursor-pointer" for="check"
                     >I’m not a robot</label
@@ -184,7 +186,7 @@
         </div>
       </div>
 
-      <div @click="showModalWindow = !showModalWindow" class="modal__bgc"></div>
+      <div class="modal__bgc" @click="showModalWindow = !showModalWindow"></div>
     </div>
   </div>
 </template>
@@ -195,9 +197,10 @@ import Icon from '~/components/Icon.vue'
 import SuccessfulPayment from '~/components/SuccessfulPayment.vue'
 import UserInterface from '~/components/UserInterface.vue'
 export default {
-  components: { Header, UserInterface, SuccessfulPayment, Icon },
   name: 'IndexPage',
+  components: { Header, UserInterface, SuccessfulPayment, Icon },
   emits: ['show-modal', 'selected-comp'],
+
   data() {
     return {
       showPassword: false,
@@ -207,13 +210,13 @@ export default {
       authForm: {
         login: '',
         password: '',
-        checkRobot: false,
+        reCAPTCHA: false,
       },
 
-      isAuthForm: {
+      defaultAuth: {
         login: 'admin777',
         password: '12345678',
-        checkRobot: true,
+        reCAPTCHA: true,
       },
     }
   },
@@ -230,12 +233,12 @@ export default {
     },
 
     login() {
-      // this.isAuthForm.checkRobot === this.authForm.checkRobot
       if (
-        this.isAuthForm.login === this.authForm.login &&
-        this.isAuthForm.password === this.authForm.password
+        this.defaultAuth.login === this.authForm.login &&
+        this.defaultAuth.password === this.authForm.password
       ) {
         localStorage.setItem('token', 'token_value')
+        this.$store.commit('auth/SET_USER', this.authForm)
         this.$router.push({ name: 'adminPanel' })
       } else {
         alert(

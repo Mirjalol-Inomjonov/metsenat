@@ -4,6 +4,7 @@
       data-aos="fade-down"
       data-aos-offset="300"
       data-aos-duration="2000"
+      data-aos-once="true"
       data-aos-easing="ease-in-sine"
     />
 
@@ -12,6 +13,7 @@
       data-aos="fade-down"
       data-aos-offset="300"
       data-aos-duration="1500"
+      data-aos-once="true"
       data-aos-easing="ease-in-sine"
     >
       <span
@@ -43,6 +45,7 @@
           class="main-info col-start-2 col-end-12 md:col-start-3 md:col-end-11"
           data-aos="zoom-in-up"
           data-aos-duration="2000"
+          data-aos-once="true"
         >
           <div class="flex items-center justify-between w-full">
             <h3 class="main-info__title text-base sm:text-2xl">
@@ -128,6 +131,7 @@
         <div
           class="main-info col-start-2 col-end-12 md:col-start-3 md:col-end-11 mb-24"
           data-aos="zoom-in-up"
+          data-aos-once="true"
           data-aos-duration="2000"
         >
           <div class="flex items-center justify-between">
@@ -458,8 +462,10 @@
 import AuthHeader from '~/components/AuthHeader.vue'
 import Icon from '~/components/Icon.vue'
 export default {
-  components: { Icon, AuthHeader },
   name: 'OneStudentInfo',
+  components: { Icon, AuthHeader },
+  middleware: 'auth',
+
   data() {
     return {
       addedSponsorEditModal: false,

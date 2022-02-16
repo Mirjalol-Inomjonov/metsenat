@@ -2,10 +2,11 @@
   <section class="admin-panel">
     <Auth-header
       :selectedComponent="selectedComponent"
-      @logo=";(selectedComponent = 'Dashboard'), (curentBtn = 'dashboard')"
       data-aos="fade-down"
       data-aos-easing="linear"
       data-aos-duration="2000"
+      data-aos-once="true"
+      @logo=";(selectedComponent = 'Dashboard'), (curentBtn = 'dashboard')"
     />
     <!-- Dashboard Navigation -->
     <nav
@@ -13,25 +14,26 @@
       data-aos="fade-down"
       data-aos-easing="linear"
       data-aos-duration="1500"
+      data-aos-once="true"
     >
       <div
         class="navigation flex items-center col-start-1 col-end-13 lg:col-end-7"
       >
         <button
-          @click=";(selectedComponent = 'Dashboard'), (curentBtn = 'dashboard')"
           :class="[curentBtn == 'dashboard' ? 'curent' : '', 'btn']"
+          @click=";(selectedComponent = 'Dashboard'), (curentBtn = 'dashboard')"
         >
           Dashboard
         </button>
         <button
-          @click=";(selectedComponent = 'Sponsor'), (curentBtn = 'homiylar')"
           :class="[curentBtn == 'homiylar' ? 'curent' : '', 'btn']"
+          @click=";(selectedComponent = 'Sponsor'), (curentBtn = 'homiylar')"
         >
           Homiylar
         </button>
         <button
-          @click=";(selectedComponent = 'Students'), (curentBtn = 'talabalar')"
           :class="[curentBtn == 'talabalar' ? 'curent' : '', 'btn']"
+          @click=";(selectedComponent = 'Students'), (curentBtn = 'talabalar')"
         >
           Talabalar
         </button>
@@ -55,8 +57,8 @@
 
         <!-- filter btn -->
         <button
-          @click="showModalWindow = !showModalWindow"
           class="filter flex items-center justify-center text-center w-full h-full"
+          @click="showModalWindow = !showModalWindow"
         >
           <i class="fas fa-filter inline-block mr-4"></i>
           <span class="inline-block">Filter</span>
@@ -68,8 +70,8 @@
     <component
       :is="selectedComponent"
       :showModalWindow="showModalWindow"
-      @close-modal-window="showModalWindow = !showModalWindow"
       :search="search"
+      @close-modal-window="showModalWindow = !showModalWindow"
     ></component>
   </section>
 </template>
@@ -80,8 +82,9 @@ import Dashboard from '~/components/Dashboard.vue'
 import Sponsor from '~/components/Sponsor.vue'
 import Students from '~/components/Students.vue'
 export default {
-  components: { AuthHeader, Dashboard, Sponsor, Students },
   name: 'adminPanel',
+  components: { AuthHeader, Dashboard, Sponsor, Students },
+  middleware: 'auth',
   emits: ['close-modal-window', 'logo'],
 
   data() {

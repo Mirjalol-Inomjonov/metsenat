@@ -4,6 +4,7 @@
       data-aos="fade-down"
       data-aos-offset="300"
       data-aos-duration="2000"
+      data-aos-once="true"
       data-aos-easing="ease-in-sine"
       @logo=";(selectedComponent = 'Dashboard'), (curentBtn = 'dashboard')"
     />
@@ -12,6 +13,7 @@
       data-aos="fade-down"
       data-aos-offset="300"
       data-aos-duration="1500"
+      data-aos-once="true"
       data-aos-easing="ease-in-sine"
     >
       <span
@@ -72,7 +74,12 @@
       class="main w-screen flex items-center flex-col text-center min-h-screen pb-96"
     >
       <div class="inline-block">
-        <div class="main-info" data-aos="zoom-in-up" data-aos-duration="2000">
+        <div
+          class="main-info"
+          data-aos="zoom-in-up"
+          data-aos-duration="2000"
+          data-aos-once="true"
+        >
           <div class="flex items-center justify-between">
             <h3 class="main-info__title text-base sm:text-2xl">Homiy haqida</h3>
             <button
@@ -241,8 +248,10 @@ import AuthHeader from '~/components/AuthHeader.vue'
 import Icon from '~/components/Icon.vue'
 
 export default {
-  components: { AuthHeader, Icon },
   name: 'oneSponsorInfo',
+  components: { AuthHeader, Icon },
+  middleware: 'auth',
+
   data() {
     return {
       isOtherPr: false,

@@ -4,6 +4,7 @@
       data-aos="fade-down"
       data-aos-easing="linear"
       data-aos-duration="2500"
+      data-aos-once="true"
     />
 
     <nav
@@ -11,6 +12,7 @@
       data-aos="fade-down"
       data-aos-easing="linear"
       data-aos-duration="2000"
+      data-aos-once="true"
     >
       <span
         class="section-nav__sponsor-name inline-block text-lg sm:text-xl md:text-2xl"
@@ -29,6 +31,7 @@
         class="main-info max-w-[350px] sm:min-w-[790px] mb-[78px]"
         data-aos="zoom-in-up"
         data-aos-duration="2000"
+        data-aos-once="true"
       >
         <form @submit.prevent="addStudent" class="form w-full">
           <div class="flex items-center flex-wrap sm:flex-nowrap sm:gap-[28px]">
@@ -126,8 +129,9 @@
 import AuthHeader from '~/components/AuthHeader.vue'
 import Icon from '~/components/Icon.vue'
 export default {
-  components: { Icon, AuthHeader },
   name: 'addStudent',
+  components: { Icon, AuthHeader },
+  middleware: 'auth',
 
   data() {
     return {

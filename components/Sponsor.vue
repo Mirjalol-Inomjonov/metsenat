@@ -8,6 +8,7 @@
             class="table-content-header__row"
             data-aos="zoom-in-up"
             data-aos-duration="2500"
+            data-aos-once="true"
           >
             <th class="table-content-header__row-item">#</th>
             <th class="table-content-header__row-item">F.I.SH</th>
@@ -26,6 +27,7 @@
             :key="index"
             data-aos="zoom-in-up"
             data-aos-duration="2000"
+            data-aos-once="true"
           >
             <td class="table-content-body__row-item">{{ index + 1 }}</td>
             <td class="table-content-body__row-item">{{ sponsor.fullName }}</td>
